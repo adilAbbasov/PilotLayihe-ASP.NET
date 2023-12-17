@@ -38,16 +38,18 @@ Ensure you have the following installed:
 1. Clone the Repository:
    git clone https://github.com/adilAbbasov/PilotLayihe-ASP.NET.git
 
-2. Update the connection string with your own connection string in appsettings.json file:
+3. Update the connection string with your own connection string in appsettings.json file:
+   
    {
       "ConnectionStrings": {
          "DefaultConnection": "your_own_connection_string_here"
       }
    }
 
-3. Apply Database Migration:
-   Add-Migration YourMigrationName
-   Update-Database
+4. Apply Database Migration:
+   
+   **Add-Migration YourMigrationName
+   **Update-Database
 
 ## Check Endpoints
 
