@@ -1,17 +1,17 @@
-# Project Name
+# PilotLayihe-ASP.NET
 
 This project is an ASP.NET Core Web API that utilizes Entity Framework Core with PostgreSQL as the database and NetTopologySuite for handling geometric data.
 
-# Overview
+## Overview
 
 This API provides functionalities to manage geometric data along with other CRUD operations for PostgreSQL database.
 
-# Features
+## Features
 
 - GeoJSON Import/Export: Import and export GeoJSON data for geometric data.
 - Management: CRUD operations for managing geometric data.
 
-# Endpoints
+## Endpoints
 
 - POST /api/v1/import-points: Import GeoJSON data for points.
 - POST /api/v1/import-buildings: Import GeoJSON data for buildings.
@@ -24,7 +24,7 @@ This API provides functionalities to manage geometric data along with other CRUD
 
 Refer to the API controller for more specific endpoint details.
 
-# Prerequisites
+## Prerequisites
 
 Ensure you have the following installed:
 
@@ -33,7 +33,7 @@ Ensure you have the following installed:
 - Any compatible IDE or text editor (Visual Studio, Visual Studio Code, etc.)
 - Before running the project, check Dependencies to make sure you have the necessary dependencies installed on your machine
 
-# Setup
+## Setup
 
 1. Clone the Repository:
    git clone https://github.com/adilAbbasov/PilotLayihe-ASP.NET.git
@@ -49,6 +49,6 @@ Ensure you have the following installed:
    Add-Migration YourMigrationName
    Update-Database
 
-# Check Endpoints
+## Check Endpoints
 
 - Check endpoints using Swagger UI or Postman
