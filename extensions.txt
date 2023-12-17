@@ -1,0 +1,23 @@
+var attributeDictionary = new Dictionary<string, object>();
+
+foreach (var attribute in feature.Attributes.GetNames())
+{
+	var attributeName = attribute;
+	var attributeValue = feature.Attributes[attributeName];
+
+	attributeDictionary[attributeName] = attributeValue;
+}
+
+foreach (var attribute in attributeDictionary)
+{
+	var propertyName = attribute.Key;
+	var propertyValue = attribute.Value?.ToString();
+
+	var propertyInfo = building.GetType().GetProperty(propertyName, BindingFlags.IgnoreCase | BindingFlags.Public | BindingFlags.Instance);
+
+	if (propertyInfo != null)
+	{
+		var convertedValue = Convert.ChangeType(propertyValue, propertyInfo.PropertyType);
+		propertyInfo.SetValue(building, convertedValue);
+	}
+}
