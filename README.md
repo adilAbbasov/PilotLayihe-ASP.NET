@@ -48,8 +48,9 @@ Ensure you have the following installed:
 
 4. Apply Database Migration:
    
-   **Add-Migration YourMigrationName
-   **Update-Database
+   Add-Migration YourMigrationName
+
+   Update-Database
 
 ## Check Endpoints
 
