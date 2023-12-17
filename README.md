@@ -36,6 +36,7 @@ Ensure you have the following installed:
 ## Setup
 
 1. Clone the Repository:
+   
    git clone https://github.com/adilAbbasov/PilotLayihe-ASP.NET.git
 
 3. Update the connection string with your own connection string in appsettings.json file:
