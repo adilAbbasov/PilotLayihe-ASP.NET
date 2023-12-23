@@ -1,0 +1,44 @@
+//building.AddrCity = feature.Attributes["addr:city"] as string;
+//building.AddrCountry = feature.Attributes["addr:country"] as string;
+//building.AddrHousenumber = feature.Attributes["addr:housenumber"] as string;
+//building.AddrPostcode = feature.Attributes["addr:postcode"] as string;
+//building.AddrStreet = feature.Attributes["addr:street"] as string;
+//building.Building = feature.Attributes["building"] as string;
+//building.BuildingLevels = feature.Attributes["building:levels"] as string;
+//building.Name = feature.Attributes["name"] as string;
+//building.NameAz = feature.Attributes["name:az"] as string;
+//building.NameEn = feature.Attributes["name:en"] as string;
+//building.NameRu = feature.Attributes["name:ru"] as string;
+//building.Geotype = feature.Attributes["geotype"] as string;
+//building.Index = int.Parse(feature.Attributes["index"].ToString());
+
+//
+
+[HttpPost("api/v1/import-roads-v1")]
+public async Task<IActionResult> ImportRoadsV1(IFormFile formFile)
+{
+	try
+	{
+		var featureCollection = CreateGeoJsonFeatureCollection(formFile)
+		foreach (var feature in featureCollection)
+		{
+			var sql = "SELECT * FROM yollar WHERE ST_Crosses(wkb_geometry, ST_GeomFromT({0},4326))";
+			var geometryText = feature.Geometry.AsText();
+			var exists = _dbContext.Yollar.FromSqlRaw(sql, geometryText).Any()
+			if (!exists)
+			{
+				var yol = new Yol
+				{
+					Wkb_geometry = feature.Geometry,
+				}
+				await _dbContext.Yollar.AddAsync(yol);
+				await _dbContext.SaveChangesAsync();
+			}
+		
+		return Ok("GeoJSON data imported successfully.");
+	}
+	catch (Exception ex)
+	{
+		return BadRequest(ex.Message);
+	}
+}
